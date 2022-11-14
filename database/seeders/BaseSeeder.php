@@ -44,9 +44,9 @@ class BaseSeeder extends Seeder
 
         
         /**
-         * Setup Faker Products
+         * Setup Faker Course
          */
-        $this->call(ProductSeeder::class);
+        $this->call(CourseSeeder::class);
     }
 
     protected function initDefaultUsers()
