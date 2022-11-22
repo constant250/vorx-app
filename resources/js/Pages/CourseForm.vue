@@ -14,14 +14,12 @@ const props = defineProps({
     course: Object,
 })
 
-console.log(props.course)
-
 const form = useForm({
-    code: props.course.code ?? '',
-    name: props.course.name ?? '',
-    target_enrolee: props.course.target_enrolee ?? 0,
-    tp_code: props.course.tp_code ?? '',
-    status: props.course.status ?? 1
+    code: props.course ? props.course.code : '',
+    name: props.course ? props.course.name : '',
+    target_enrolee: props.course ? props.course.target_enrolee : 0,
+    tp_code: props.course ? props.course.tp_code : '',
+    status: props.course ? props.course.status : 1
 })
 
 </script>
@@ -94,6 +92,7 @@ const form = useForm({
                     </div>
                 </div>
             </div>
+
         </div>
     </AuthenticatedLayout>
 </template>

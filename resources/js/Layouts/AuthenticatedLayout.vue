@@ -147,7 +147,7 @@ const flashColor = (status) => {
 
             <!-- Flash Message Content -->
             <div v-if="$page.props.flash.message" class="mx-auto pt-6 px-4 sm:px-6 lg:px-8">
-                <div :class="`bg-${flashColor($page.props.flash.status)}-100 border border-${flashColor($page.props.flash.status)}-400 text-${flashColor($page.props.flash.status)}-700 px-4 py-3 rounded relative`" role="alert">
+                <div :class="`bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative`" role="alert">
                     <strong class="font-bold">{{$page.props.flash.message}}</strong>
                     
                 </div>
