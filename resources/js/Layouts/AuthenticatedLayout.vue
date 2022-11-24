@@ -19,8 +19,8 @@ const logout = () => {
             localStorage.removeItem('user-token')
             localStorage.removeItem('isViewed')
             localStorage.removeItem('isLogged')
-            localStroage.removeItem('user_name')
-            localStroage.removeItem('user_email')
+            localStorage.removeItem('user_name')
+            localStorage.removeItem('user_email')
 
             axios.post('/logout')
             .then(response => {

@@ -44,6 +44,7 @@ function loginAuth() {
                 localStorage.setItem('isLogged', true)
                 localStorage.setItem('user_name', res.data.data.user.name)
                 localStorage.setItem('user_email', res.data.data.user.email)
+                // localStorage.setItem('user-token', res.data.data.user.api_token)
             } else {
                 localStroage.removeItem('user-token')
                 localStroage.removeItem('user_name')
