@@ -18,8 +18,14 @@ class BaseSeeder extends Seeder
          * Setup Worth account
          */
         $account = new Account();
+        $account->company_name = 'vorx.io';
+        $account->save();
+
+        $account = new Account();
         $account->company_name = 'worth.io';
         $account->save();
+
+        
 
 
         /**
@@ -59,7 +65,15 @@ class BaseSeeder extends Seeder
             [
                 'name' => 'Jim Claro',
                 'email' => 'jim@worth.io',
-            ]
+            ],
+            [
+                'name' => 'Xy Joaquin',
+                'email' => 'xy@vorx.io',
+            ],
+            [
+                'name' => 'Jayr Mendoza',
+                'email' => 'jayr@vorx.io',
+            ],
         ];
     }
 }
