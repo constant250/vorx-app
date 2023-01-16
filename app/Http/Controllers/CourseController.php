@@ -17,9 +17,9 @@ class CourseController extends Controller
 {
     public static function webRoutes()
     {
+        Route::get('course/create', [CourseController::class, 'create'])->name('course.create');
         Route::get('course', [CourseController::class, 'index'])->name('course.index');
         Route::get('course/{course}', [CourseController::class, 'edit'])->name('course.edit');
-        Route::get('course/create', [CourseController::class, 'create'])->name('course.create');
         Route::put('course/{course}', [CourseController::class, 'update'])->name('course.update');
         Route::delete('course/{course}', [CourseController::class, 'delete'])->name('course.delete');
         Route::post('course', [CourseController::class, 'store'])->name('course.store');

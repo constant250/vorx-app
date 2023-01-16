@@ -8,7 +8,9 @@ import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
 import { Link } from '@inertiajs/inertia-vue3';
 import axios from 'axios';
 
-const showingNavigationDropdown = ref(false)
+const openProfile = ref(false);
+const openNotification = ref(false);
+const showingNavigationDropdown = ref(false);
 const user_name = localStorage.getItem('user_name');
 const user_email = localStorage.getItem('user_email');
 
@@ -19,8 +21,8 @@ const logout = () => {
             localStorage.removeItem('user-token')
             localStorage.removeItem('isViewed')
             localStorage.removeItem('isLogged')
-            localStroage.removeItem('user_name')
-            localStroage.removeItem('user_email')
+            localStorage.removeItem('user_name')
+            localStorage.removeItem('user_email')
 
             axios.post('/logout')
             .then(response => {
@@ -50,113 +52,162 @@ const flashColor = (status) => {
     }
 }
 
-
 </script>
+
+<style scoped>
+.app-main {
+    background: #2c2d44;
+    background-image: -moz-linear-gradient(45deg, #3f3251 2%, #002025 100%);
+    background-image: -webkit-linear-gradient(45deg, #3f3251 2%, #002025 100%);
+    background-image: linear-gradient(45deg, #3f3251 2%, #002025 100%);
+}
+.dropdown .dropdown-btn{
+    color: #FFF;
+}
+.global-search{background-color: transparent;}
+.global-search .material-icons{color: #ffffff80;}
+</style>
+<style>
+.dropdown .dropdown-btn .mdc-button__label {
+    display: flex;
+    align-items: center;
+}
+.global-search .mdc-floating-label {
+    color: #ffffff80 !important;
+}
+.global-search .mdc-text-field__input {
+    color: #FFF !important;
+    font-size: 12px;
+}
+.global-search:not(.mdc-text-field--disabled) .mdc-line-ripple:before {
+    border-bottom-color: #ffffff80 !important;
+}
+
+.notification-dropdown ul{
+    padding: 0;
+}
+
+.mdc-text-field__input {
+    --tw-ring-shadow: 0 !important;
+}
+</style>
 
 <template>
     <div>
-        <div class="min-h-screen bg-gray-100">
-            <nav class="bg-white border-b border-gray-100">
-                <!-- Primary Navigation Menu -->
-                <div class="mx-auto px-4 sm:px-6 lg:px-8">
-                    <div class="flex justify-between h-16">
-                        <div class="flex">
-                            <!-- Logo -->
-                            <div class="shrink-0 flex items-center">
+        <div class="app-main min-h-screen">
+
+            <div class="p-10">
+                <div class="grid grid-rows-1 grid-cols-6 gap-7 min-h-screen">
+                    <div class="col-span-1 ...">
+                        <div class="sidenav shadow-lg pb-5 rounded-xl backdrop-blur-lg backdrop-saturate-50 bg-white/50">
+                            <div class="grow w-full flex items-center justify-center p-5 mb-5">
                                 <Link :href="route('dashboard')">
                                     <ApplicationLogo class="block h-9 w-auto" />
                                 </Link>
                             </div>
-
                             <!-- Navigation Links -->
-                            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                                <NavLink :href="route('dashboard')" :active="route().current('dashboard')">
+                            <div class="sm:flex sm:flex-col pr-7">
+                                <NavLink :href="route('dashboard')" :active="route().current('dashboard')" class="flex content-center">
+                                    <ui-icon :size="24" class="mr-2">home</ui-icon>
                                     Dashboard
                                 </NavLink>
-                                <NavLink :href="route('course.index')" :active="route().current('course.index')">
+                                <NavLink :href="route('course.index')" :active="route().current('course.index')" class="flex content-center">
+                                    <ui-icon :size="24" class="mr-2">auto_stories</ui-icon>
                                     Course
                                 </NavLink>
                             </div>
                         </div>
+                    </div>
+                    <div class="col-span-5 ...">
 
-                        <div class="hidden sm:flex sm:items-center sm:ml-6">
-                            <!-- Settings Dropdown -->
-                            <div class="ml-3 relative">
-                                <Dropdown align="right" width="48">
-                                    <template #trigger>
-                                        <span class="inline-flex rounded-md">
-                                            <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
-                                                {{ user_name }}
-                                                <svg class="ml-2 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                                </svg>
-                                            </button>
-                                        </span>
-                                    </template>
+                        <div class="mb-5">
+                            <div class="flex justify-between">
+                                <div class="flex items-center">
+                                    <ui-textfield class="global-search">
+                                        Search...
+                                        <template #before>
+                                            <ui-textfield-icon>search</ui-textfield-icon>
+                                        </template>
+                                    </ui-textfield>
+                                    <ui-menu-anchor class="mx-5">
+                                        <ui-badge overlap :count="8">
+                                            <ui-icon @click="openNotification = true" class="text-white cursor-pointer">notifications_none</ui-icon>
+                                        </ui-badge>
+                                        <!-- <ui-icon-button @click="openNotification = true" icon="notifications_none" class="text-white"></ui-icon-button> -->
 
-                                    <template #content>
-                                        <DropdownLink @click="logout()" as="button">
-                                            Log Out
-                                        </DropdownLink>
-                                    </template>
-                                </Dropdown>
+                                        <ui-menu class="notification-dropdown overflow-hidden" v-model="openNotification" position="BOTTOM_START">
+                                            <div class="w-80">
+                                                <div class="text-center text-xs py-2 shadow">
+                                                    Notifications
+                                                </div>
+                                                <ui-list :type="2">
+                                                    <ui-item v-for="i in 3" :key="i">
+                                                        <ui-item-text-content>
+                                                            <ui-item-text1>Enrolment Form Submission</ui-item-text1>
+                                                            <ui-item-text2>Nov 16, 2022 | 10:34 pm</ui-item-text2>
+                                                        </ui-item-text-content>
+                                                    </ui-item>
+                                                </ui-list>
+                                            </div>
+                                        </ui-menu>
+                                    </ui-menu-anchor>
+                                    
+                                </div>
+                                <!-- Settings Dropdown -->
+                                <div class="flex items-center">
+                                    <div class="text-white px-2 text-sm">
+                                        Wednesday, Nov 16, 2022
+                                    </div>
+                                    <div class="text-white mx-2">|</div>
+                                    <ui-menu-anchor class="dropdown">
+                                        <ui-button class="dropdown-btn text-sm" @click="openProfile = true">Hi, {{ user_name }} <img :src="'/default/img/default-user.png'" alt="" class="w-7 rounded-full ml-2 mr-1"><ui-icon>arrow_drop_down</ui-icon>
+                                        </ui-button>
+                                        <ui-menu class="dropdown-menu w-44" v-model="openProfile" position="BOTTOM_START">
+                                            <ui-menuitem>
+                                                <ui-menuitem-text class="flex items-center text-xs">
+                                                    <ui-icon class="mr-3" :size="18">face</ui-icon> My Profile
+                                                </ui-menuitem-text>
+                                            </ui-menuitem>
+                                            <ui-menuitem>
+                                                <ui-menuitem-text class="flex items-center text-xs">
+                                                    <ui-icon class="mr-3" :size="18">settings</ui-icon>Settings
+                                                </ui-menuitem-text>
+                                            </ui-menuitem>
+                                            <ui-menuitem-divider></ui-menuitem-divider>
+                                            <ui-menuitem @click="logout()" as="button">
+                                                <ui-menuitem-text class="flex items-center text-xs">
+                                                    <ui-icon class="mr-3" :size="18">logout</ui-icon>Logout
+                                                </ui-menuitem-text>
+                                            </ui-menuitem>
+                                        </ui-menu>
+                                    </ui-menu-anchor>
+                                </div>
                             </div>
                         </div>
-                        <!-- Hamburger -->
-                        <div class="-mr-2 flex items-center sm:hidden">
-                            <button @click="showingNavigationDropdown = ! showingNavigationDropdown" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">
-                                <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-                                    <path :class="{'hidden': showingNavigationDropdown, 'inline-flex': ! showingNavigationDropdown }" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                                    <path :class="{'hidden': ! showingNavigationDropdown, 'inline-flex': showingNavigationDropdown }" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                                </svg>
-                            </button>
+                        <div class="bg-white rounded-xl">
+                            <!-- Page Heading -->
+                            <header class="bg-white shadow rounded-t-lg" v-if="$slots.header">
+                                <div class="mx-auto py-5 px-3 sm:px-6">
+                                    <slot name="header" />
+                                </div>
+                            </header>
+                            
+                            <!-- Flash Message Content -->
+                            <div v-if="$page.props.flash.message" class="mx-auto pt-6 px-4 sm:px-6 lg:px-8">
+                                <div :class="`bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative`" role="alert">
+                                    <strong class="font-bold">{{ $page.props.flash.message }}</strong>
+                                </div>
+                            </div>
+                            
+                            <!-- Page Content -->
+                            <main class="p-10">
+                                <slot />
+                            </main>
                         </div>
                     </div>
-                </div>
-
-                <!-- Responsive Navigation Menu -->
-                <div :class="{'block': showingNavigationDropdown, 'hidden': ! showingNavigationDropdown}" class="sm:hidden">
-                    <div class="pt-2 pb-3 space-y-1">
-                        <ResponsiveNavLink :href="route('dashboard')" :active="route().current('dashboard')">
-                            Dashboard
-                        </ResponsiveNavLink>
-                    </div>
-
-                    <!-- Responsive Settings Options -->
-                    <div class="pt-4 pb-1 border-t border-gray-200">
-                        <div class="px-4">
-                            <div class="font-medium text-base text-gray-800">{{ user_name }}</div>
-                            <div class="font-medium text-sm text-gray-500">{{ user_email }}</div>
-                        </div>
-
-                        <div class="mt-3 space-y-1">
-                            <ResponsiveNavLink @click="logout()" as="button">
-                                Log Out
-                            </ResponsiveNavLink>
-                        </div>
-                    </div>
-                </div>
-            </nav>
-
-            <!-- Page Heading -->
-            <header class="bg-white shadow" v-if="$slots.header">
-                <div class="mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                    <slot name="header" />
-                </div>
-            </header>
-
-            <!-- Flash Message Content -->
-            <div v-if="$page.props.flash.message" class="mx-auto pt-6 px-4 sm:px-6 lg:px-8">
-                <div :class="`bg-${flashColor($page.props.flash.status)}-100 border border-${flashColor($page.props.flash.status)}-400 text-${flashColor($page.props.flash.status)}-700 px-4 py-3 rounded relative`" role="alert">
-                    <strong class="font-bold">{{$page.props.flash.message}}</strong>
-                    
                 </div>
             </div>
 
-            <!-- Page Content -->
-            <main>
-                <slot />
-            </main>
         </div>
     </div>
 </template>
