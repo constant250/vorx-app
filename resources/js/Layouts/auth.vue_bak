@@ -1,0 +1,28 @@
+<script setup>
+import ApplicationLogo from '@/Components/ApplicationLogo.vue';
+import { Link } from '@inertiajs/inertia-vue3';
+</script>
+
+<style scoped>
+.container {
+    max-width: 555px;
+}
+
+.auth-wrapper {
+    background-image: ;
+}
+</style>
+
+<template>
+    <div
+        class="bg-[url('https://images.unsplash.com/photo-1669062897193-f8a4215c2033?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80')] bg-no-repeat bg-cover min-h-screen flex flex-col justify-center items-center">
+        <div>
+            <Link href="/">
+            <ApplicationLogo class="w-20 h-20 fill-current text-slate-300 mb-5" />
+            </Link>
+        </div>
+        <div class="container">
+            <slot />
+        </div>
+    </div>
+</template>
