@@ -207,23 +207,27 @@ const dateTo = ref('');
                     <ui-menu-anchor>
                         <ui-button icon="filter_alt" @click="openFilter = true">Filter</ui-button>
 
-                        <ui-menu v-model="openFilter" position="BOTTOM_START">
-                            <div class="w-[32rem] py-2 px-4 grid grid-cols-2 grid-rows-4 gap-4">
-                                <ui-datepicker v-model="dateFrom" icon="calendar_month" withLeadingIcon :config="config" placeholder="From" clear></ui-datepicker>
-                                <ui-datepicker v-model="dateTo" icon="calendar_month" withLeadingIcon :config="config" placeholder="To" clear></ui-datepicker>
-                                <ui-select v-model="courseSelected" :options="courseOptions" fixed>
-                                    Course:
-                                </ui-select>
-                                <ui-select :options="locationOptions">
-                                    Location:
-                                </ui-select>
-                                <ui-select :options="studentTypeOptions">
-                                    Student Type:
-                                </ui-select>
-                                <ui-select :options="statusOptions">
-                                    Status:
-                                </ui-select>
-                                <ui-button unelevated class="col-span-2">Filter</ui-button>
+                        <ui-menu v-model="openFilter" position="BOTTOM_START" class="filter-dropdown">
+                            <div class="w-[32rem]">
+                                <div class="p-4 grid grid-cols-2 grid-rows-3 gap-4">
+                                    <ui-datepicker v-model="dateFrom" icon="calendar_month" withLeadingIcon :config="config" placeholder="From"
+                                        clear></ui-datepicker>
+                                    <ui-datepicker v-model="dateTo" icon="calendar_month" withLeadingIcon :config="config" placeholder="To"
+                                        clear></ui-datepicker>
+                                    <ui-select v-model="courseSelected" :options="courseOptions" fixed>
+                                        Course:
+                                    </ui-select>
+                                    <ui-select :options="locationOptions">
+                                        Location:
+                                    </ui-select>
+                                    <ui-select :options="studentTypeOptions">
+                                        Student Type:
+                                    </ui-select>
+                                    <ui-select :options="statusOptions">
+                                        Status:
+                                    </ui-select>
+                                </div>
+                                <ui-button unelevated class="w-full !rounded-none">Filter</ui-button>
                             </div>
                         </ui-menu>
                     </ui-menu-anchor>

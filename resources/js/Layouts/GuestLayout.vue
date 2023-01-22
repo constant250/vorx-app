@@ -125,16 +125,22 @@ const particlesOptions = {
 }
 </style>
 
+<style>
+.mdc-text-field__input {
+    --tw-ring-shadow: 0 !important;
+}
+</style>
+
 <template>
     <div class="auth-wrapper min-h-screen flex flex-col justify-center items-center">
          <Particles id="tsparticles" :particlesInit="particlesInit" :particlesLoaded="particlesLoaded" :options="particlesOptions" />
         <div class="z-40">
             <Link href="/">
-            <ApplicationLogo class="w-20 h-20 fill-current text-slate-300 mb-5" />
+            <ApplicationLogo class="block h-14 w-auto mb-4" />
             </Link>
         </div>
         <div class="container">
-            <slot />
+``            <slot />
         </div>
     </div>
 </template>
