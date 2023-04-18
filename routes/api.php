@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\CourseController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Http\Request;
@@ -32,7 +33,8 @@ Route::prefix('v1')->middleware(['auth:sanctum'])->group(function () {
 
     /** API Routes */
     // UserController::apiRoutes();
-    ProductController::apiRoutes();
+    CourseController::apiRoutes();
+    
     
 });
 
