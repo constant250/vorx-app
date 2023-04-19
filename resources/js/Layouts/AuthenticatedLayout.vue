@@ -90,6 +90,14 @@ const flashColor = (status) => {
 .mdc-text-field__input {
     --tw-ring-shadow: 0 !important;
 }
+
+.filter-dropdown ul {
+    padding: 0;
+}
+
+.\!rounded-none {
+    border-radius: 0 !important;
+}
 </style>
 
 <template>
