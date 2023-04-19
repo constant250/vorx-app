@@ -26,7 +26,7 @@ class CreateCourseRequest extends FormRequest
     public function rules()
     {
         return [
-            'code' => 'required',
+            'code' => 'required|unique:App\Models\Course,code',
             'name' => 'required',
             'target_enrolee' => 'required|numeric',
             'tp_code' => 'sometimes',

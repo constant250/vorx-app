@@ -3,8 +3,10 @@
 namespace App\Models;
 
 use App\Interfaces\ImageableInterface;
-use App\Models\Enums\CourseStatusEnum;
-use App\Models\Services\CourseService;
+use App\Models\Enums\StudentShoreTypeEnum;
+use App\Models\Enums\StudentStatusEnum;
+use App\Models\Enums\StudentTestEnum;
+use App\Models\Services\StudentService;
 use App\Scopes\AccountScope;
 use App\Traits\BaseAccountModelTrait;
 use App\Traits\ImageableTrait;
@@ -12,7 +14,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Course extends Model implements ImageableInterface
+class Student extends Model implements ImageableInterface
 {
     use HasFactory;
     use BaseAccountModelTrait;
@@ -23,7 +25,9 @@ class Course extends Model implements ImageableInterface
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
         'deleted_at' => 'datetime',
-        'status' => CourseStatusEnum::class
+        'is_active' => StudentStatusEnum::class,
+        'is_test' => StudentTestEnum::class,
+        'shore_type' => StudentShoreTypeEnum::class,
     ];
 
     protected static function boot()
@@ -33,11 +37,11 @@ class Course extends Model implements ImageableInterface
         static::addGlobalScope(new AccountScope());
     }
 
-    public function Service(): CourseService
+    public function Service(): StudentService
     {
-        return new CourseService($this);
+        return new StudentService($this);
     }
-    
+
     public function getRootDestinationPath(string $dir = null): string
     {
         $rootPath = "/course/{$this->id}";
@@ -53,4 +57,5 @@ class Course extends Model implements ImageableInterface
     {
         return $this->belongsTo(Account::class);
     }
+
 }
