@@ -7,7 +7,7 @@ namespace App\Models\Enums;
  * @method static INACTIVE()
  *
  */
-class CourseStatusEnum extends Enumerate
+class StudentStatusEnum extends Enumerate
 {
     const ACTIVE = 1;
     const INACTIVE = 0;

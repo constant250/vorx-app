@@ -15,8 +15,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Course extends Model implements ImageableInterface
 {
     use HasFactory;
-
-    use HasFactory;
     use BaseAccountModelTrait;
     use ImageableTrait;
     use SoftDeletes;

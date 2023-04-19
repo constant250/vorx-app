@@ -29,6 +29,7 @@ class CourseController extends Controller
 
     public function getCollection(Request $request)
     {
+        
         $course = Course::orderBy('id','desc')->paginate($request->input('per_page', 10));
 
         return CourseResource::collection($course);
