@@ -25,7 +25,6 @@ return new class extends Migration
             $table->string('shore_type')->default('ONSHORE');
             $table->integer('is_active')->default(1);
             $table->integer('is_test')->default(1);
-            $table->integer('user_id')->nullable();
             SchemaBuilder::BelongsToUserSchemaUp($table);
         });
     }
