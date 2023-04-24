@@ -1,1 +1,0 @@
-import{o as r,g as s}from"./app.5d61f75a.js";const a=(o,t)=>{const c=o.__vccOpts||o;for(const[e,n]of t)c[e]=n;return c},_={},l=["src"];function i(o,t){return r(),s("img",{src:"/default/img/vorx-logo.png",alt:"",class:""},null,8,l)}const f=a(_,[["render",i]]);export{f as A,a as _};
