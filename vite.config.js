@@ -5,7 +5,7 @@ import {homedir} from 'os'
 import {resolve} from 'path'
 import fs from 'fs';
 
-let host = 'worth-app.local'
+let host = '192.168.56.56'
 
 export default defineConfig({
     plugins: [
@@ -37,11 +37,29 @@ function detectServerConfig(host) {
     let certificatePath = resolve(homedir(), `.config/valet/Certificates/${host}.crt`)
 
     if (!fs.existsSync(keyPath)) {
-        return {}
+        return {
+            hmr: {
+                protocol: 'ws',
+                host: host,
+            },
+            host: host,
+            watch: {
+              usePolling: true,
+            },
+        }
     }
 
     if (!fs.existsSync(certificatePath)) {
-        return {}
+        return {
+            hmr: {
+                protocol: 'ws',
+                host: host,
+            },
+            host: host,
+            watch: {
+              usePolling: true,
+            },
+        }
     }
 
     return {
