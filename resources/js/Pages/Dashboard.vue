@@ -17,7 +17,7 @@ const sampleButton = () => {
     <AuthenticatedLayout>
         <template #header>
             <h2 class="font-semibold text-lg text-gray-800 leading-tight">
-                Dashboard
+                Dashboard 
             </h2>
         </template>
 
