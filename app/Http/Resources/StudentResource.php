@@ -1,9 +1,14 @@
 <?php
 
 namespace App\Http\Resources;
-
+use App\Models\Student;
 use Illuminate\Http\Resources\Json\JsonResource;
 
+/**
+ * Class StudentResource.
+ *
+ * @property Student $resource
+ */
 class StudentResource extends JsonResource
 {
     /**
