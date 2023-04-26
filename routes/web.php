@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\StudentController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Foundation\Application;
@@ -37,6 +38,7 @@ Route::middleware(['auth', 'verified'])->group( function () {
 
     ProductController::webRoutes();
     CourseController::webRoutes();
+    StudentController::webRoutes();
 });
 
 
