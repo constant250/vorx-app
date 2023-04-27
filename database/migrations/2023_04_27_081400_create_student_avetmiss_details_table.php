@@ -17,7 +17,8 @@ return new class extends Migration
             $table->id();
 
             $table->unsignedBigInteger('student_id')->index();
-            $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');
+            // $table->foreignId('student_id')->constrained('students')->onDelete('cascade');
+            // $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');
             
             $table->string('usi')->nullable();
             $table->string('highest_school_level_completed_id')->nullable();
@@ -44,6 +45,11 @@ return new class extends Migration
 
             $table->timestamps();
         });
+
+        // Schema::table('student_avetmiss_details', function (Blueprint $table) {
+        //     $table->unsignedBigInteger('student_id')->index();
+        //     $table->foreignId('student_id')->references('id')->on('students')->onDelete('cascade');
+        // });
     }
 
     /**
