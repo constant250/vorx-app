@@ -40,7 +40,7 @@ return new class extends Migration
 
             $table->integer('english_test_id')->nullable();
             $table->string('english_test_score')->nullable();
-            $table->date('english_test_date ')->nullable();
+            $table->date('english_test_date')->nullable();
 
             $table->timestamps();
         });
