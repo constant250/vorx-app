@@ -50,6 +50,9 @@ class UpdateStudentRequest extends FormRequest
             'firstname' => 'First Name',
             'lastname' => 'Last Name',
             'date_of_birth' => 'Date of Birth',
+            'shore_type' => 'Shore Type',
+            'is_active' => 'Status',
+            'is_test' => 'Test Data',
         ];
     }
 
