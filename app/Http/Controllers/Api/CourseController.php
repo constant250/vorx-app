@@ -20,6 +20,7 @@ class CourseController extends Controller
 {
     public static function apiRoutes()
     {
+        Route::post('courses/{course}/assign-units', [CourseController::class, 'assignUnits']);
         Route::post('courses', [CourseController::class, 'create']);
         Route::put('courses/{course}', [CourseController::class, 'update']);
         Route::delete('courses/{course}', [CourseController::class, 'delete']);
@@ -74,6 +75,13 @@ class CourseController extends Controller
 
         return ResponseService::success('Course was deleted.');
 
+    }
+
+    public function assignUnits(Course $course, Request $request)
+    {
+        $course = $course->Service()->assignUnits($request->units);
+        
+        return ResponseService::success('Units was added to the course.',  new CourseResource($course));
     }
 
 }
