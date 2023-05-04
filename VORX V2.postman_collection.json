@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "812a2355-665d-4b82-8f6e-c0e4ddd8e4a7",
+		"_postman_id": "7bba00d5-7dd9-4ece-8341-6f200e87cba0",
 		"name": "VORX V2",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "26981171"
+		"_exporter_id": "26983111"
 	},
 	"item": [
 		{
@@ -19,7 +19,7 @@
 							"formdata": [
 								{
 									"key": "email",
-									"value": "xy@vorx.io",
+									"value": "jim@worth.io",
 									"type": "text"
 								},
 								{
@@ -30,13 +30,11 @@
 							]
 						},
 						"url": {
-							"raw": "https://staging-v2.vorx.com.au/api/v1/login",
-							"protocol": "https",
+							"raw": "http://vorxapp.rto/api/v1/login",
+							"protocol": "http",
 							"host": [
-								"staging-v2",
-								"vorx",
-								"com",
-								"au"
+								"vorxapp",
+								"rto"
 							],
 							"path": [
 								"api",
@@ -64,13 +62,11 @@
 							}
 						],
 						"url": {
-							"raw": "https://staging-v2.vorx.com.au/api/v1/courses",
-							"protocol": "https",
+							"raw": "http://vorxapp.rto/api/v1/courses",
+							"protocol": "http",
 							"host": [
-								"staging-v2",
-								"vorx",
-								"com",
-								"au"
+								"vorxapp",
+								"rto"
 							],
 							"path": [
 								"api",
@@ -87,19 +83,17 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://staging-v2.vorx.com.au/api/v1/courses/7",
-							"protocol": "https",
+							"raw": "http://vorxapp.rto/api/v1/courses/1",
+							"protocol": "http",
 							"host": [
-								"staging-v2",
-								"vorx",
-								"com",
-								"au"
+								"vorxapp",
+								"rto"
 							],
 							"path": [
 								"api",
 								"v1",
 								"courses",
-								"7"
+								"1"
 							]
 						}
 					},
@@ -126,13 +120,11 @@
 							}
 						},
 						"url": {
-							"raw": "https://staging-v2.vorx.com.au/api/v1/courses",
-							"protocol": "https",
+							"raw": "http://vorxapp.rto/api/v1/courses",
+							"protocol": "http",
 							"host": [
-								"staging-v2",
-								"vorx",
-								"com",
-								"au"
+								"vorxapp",
+								"rto"
 							],
 							"path": [
 								"api",
@@ -164,186 +156,17 @@
 							}
 						},
 						"url": {
-							"raw": "https://staging-v2.vorx.com.au/api/v1/courses/7",
-							"protocol": "https",
+							"raw": "http://vorxapp.rto/api/v1/courses/7",
+							"protocol": "http",
 							"host": [
-								"staging-v2",
-								"vorx",
-								"com",
-								"au"
+								"vorxapp",
+								"rto"
 							],
 							"path": [
 								"api",
 								"v1",
 								"courses",
 								"7"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "New Request",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "https://staging-v2.vorx.com.au/api/v1/courses/7",
-							"protocol": "https",
-							"host": [
-								"staging-v2",
-								"vorx",
-								"com",
-								"au"
-							],
-							"path": [
-								"api",
-								"v1",
-								"courses",
-								"7"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Student",
-			"item": [
-				{
-					"name": "Create",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"firstname\": \"Jon\",\r\n  \"middlename\": \"\",\r\n  \"lastname\": \"Doe\",\r\n  \"date_of_birth\": \"1994-03-07\",\r\n  \"gender\": \"\",\r\n  \"shore_type\": \"ONSHORE\",\r\n  \"is_active\": 1,\r\n  \"is_test\": 1\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "https://staging-v2.vorx.com.au/api/v1/students/create",
-							"protocol": "https",
-							"host": [
-								"staging-v2",
-								"vorx",
-								"com",
-								"au"
-							],
-							"path": [
-								"api",
-								"v1",
-								"students",
-								"create"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Update",
-					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"student_id\": \"VRX00003\",\r\n  \"firstname\": \"Xy\",\r\n  \"middlename\": \"Midol Update\",\r\n  \"lastname\": \"Joaquin\",\r\n  \"date_of_birth\": \"1994-03-10\",\r\n  \"gender\": \"Female\",\r\n  \"shore_type\": \"ONSHORE\",\r\n  \"is_active\": 1,\r\n  \"is_test\": 1\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "https://staging-v2.vorx.com.au/api/v1/students/4",
-							"protocol": "https",
-							"host": [
-								"staging-v2",
-								"vorx",
-								"com",
-								"au"
-							],
-							"path": [
-								"api",
-								"v1",
-								"students",
-								"4"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get Collection",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "https://staging-v2.vorx.com.au/api/v1/students",
-							"protocol": "https",
-							"host": [
-								"staging-v2",
-								"vorx",
-								"com",
-								"au"
-							],
-							"path": [
-								"api",
-								"v1",
-								"students"
-							],
-							"query": [
-								{
-									"key": "",
-									"value": "",
-									"disabled": true
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get Single",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "https://staging-v2.vorx.com.au/api/v1/students/3",
-							"protocol": "https",
-							"host": [
-								"staging-v2",
-								"vorx",
-								"com",
-								"au"
-							],
-							"path": [
-								"api",
-								"v1",
-								"students",
-								"3"
 							]
 						}
 					},
@@ -355,19 +178,17 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "https://staging-v2.vorx.com.au/api/v1/students/3",
-							"protocol": "https",
+							"raw": "http://vorxapp.rto/api/v1/courses/7",
+							"protocol": "http",
 							"host": [
-								"staging-v2",
-								"vorx",
-								"com",
-								"au"
+								"vorxapp",
+								"rto"
 							],
 							"path": [
 								"api",
 								"v1",
-								"students",
-								"3"
+								"courses",
+								"7"
 							]
 						}
 					},
@@ -391,7 +212,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"code\": \"ACMACR401\",\r\n  \"description\": \"Comply with animal control and regulation requirementsss\",\r\n  \"unit_type\": \"CORE\",\r\n  \"assessment_method\": 1,\r\n  \"nominal_hours\": 0,\r\n  \"scheduled_hours\": 20,\r\n  \"training_method_id\": 1,\r\n  \"subject_field_educ_id\": 20,\r\n  \"vet_flag\": 0,\r\n  \"status\": 1\r\n}",
+							"raw": "{\r\n  \"code\": \"trt\",\r\n  \"description\": \"\",\r\n  \"unit_type\": \"CORE\",\r\n  \"assessment_method\": [1,2],\r\n  \"nominal_hours\": \"\",\r\n  \"scheduled_hours\": \"\",\r\n  \"training_method_id\": \"\",\r\n  \"subject_field_educ_id\": \"\",\r\n  \"vet_flag\": 0,\r\n  \"status\": 1\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -399,13 +220,11 @@
 							}
 						},
 						"url": {
-							"raw": "https://staging-v2.vorx.com.au/api/v1/units/create",
-							"protocol": "https",
+							"raw": "http://vorxapp.rto/api/v1/units/create",
+							"protocol": "http",
 							"host": [
-								"staging-v2",
-								"vorx",
-								"com",
-								"au"
+								"vorxapp",
+								"rto"
 							],
 							"path": [
 								"api",
@@ -430,7 +249,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"code\": \"ACMACR40111\",\r\n  \"description\": \"Comply with animal control and regulation requirements\",\r\n  \"unit_type\": \"CORE\",\r\n  \"assessment_method\": \"\",\r\n  \"nominal_hours\": 24,\r\n  \"scheduled_hours\": 4,\r\n  \"training_method_id\": \"\",\r\n  \"subject_field_educ_id\": \"\",\r\n  \"vet_flag\": 0,\r\n  \"status\": 1\r\n}",
+							"raw": "{\r\n  \"code\": \"dsdsd55555mmm\",\r\n  \"description\": \"\",\r\n  \"unit_type\": \"CORE\",\r\n  \"assessment_method\": \"Contrary to popular belief\",\r\n  \"nominal_hours\": \"\",\r\n  \"scheduled_hours\": \"\",\r\n  \"training_method_id\": 1,\r\n  \"subject_field_educ_id\": 1,\r\n  \"vet_flag\": 0,\r\n  \"status\":1\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -438,19 +257,17 @@
 							}
 						},
 						"url": {
-							"raw": "https://staging-v2.vorx.com.au/api/v1/units/5",
-							"protocol": "https",
+							"raw": "http://vorxapp.rto/api/v1/units/2",
+							"protocol": "http",
 							"host": [
-								"staging-v2",
-								"vorx",
-								"com",
-								"au"
+								"vorxapp",
+								"rto"
 							],
 							"path": [
 								"api",
 								"v1",
 								"units",
-								"5"
+								"2"
 							]
 						}
 					},
@@ -462,13 +279,11 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://staging-v2.vorx.com.au/api/v1/units",
-							"protocol": "https",
+							"raw": "http://vorxapp.rto/api/v1/units",
+							"protocol": "http",
 							"host": [
-								"staging-v2",
-								"vorx",
-								"com",
-								"au"
+								"vorxapp",
+								"rto"
 							],
 							"path": [
 								"api",
@@ -485,19 +300,17 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://staging-v2.vorx.com.au/api/v1/units/3",
-							"protocol": "https",
+							"raw": "http://vorxapp.rto/api/v1/units/2",
+							"protocol": "http",
 							"host": [
-								"staging-v2",
-								"vorx",
-								"com",
-								"au"
+								"vorxapp",
+								"rto"
 							],
 							"path": [
 								"api",
 								"v1",
 								"units",
-								"3"
+								"2"
 							]
 						}
 					},
@@ -509,19 +322,279 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "https://staging-v2.vorx.com.au/api/v1/units/4",
-							"protocol": "https",
+							"raw": "http://vorxapp.rto/api/v1/units/1",
+							"protocol": "http",
 							"host": [
-								"staging-v2",
-								"vorx",
-								"com",
-								"au"
+								"vorxapp",
+								"rto"
 							],
 							"path": [
 								"api",
 								"v1",
 								"units",
-								"4"
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Student",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"firstname\": \"Quinne\",\r\n  \"middlename\": \"\",\r\n  \"lastname\": \"Joaquin\",\r\n  \"date_of_birth\": \"1989-03-03\",\r\n  \"gender\": \"Female\",\r\n  \"shore_type\": \"ONSHORE\",\r\n  \"is_active\": 1,\r\n  \"is_test\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://vorxapp.rto/api/v1/students/create",
+							"protocol": "http",
+							"host": [
+								"vorxapp",
+								"rto"
+							],
+							"path": [
+								"api",
+								"v1",
+								"students",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"student_id\": \"VRX01237\",\r\n  \"firstname\": \"dsdsd\",\r\n  \"middlename\": \"sasas\",\r\n  \"lastname\": \"kjjjjjj\",\r\n  \"date_of_birth\": \"1989-03-03\",\r\n  \"gender\": \"Female\",\r\n  \"shore_type\": \"ONSHORE\",\r\n  \"is_active\": 1,\r\n  \"is_test\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://vorxapp.rto/api/v1/students/19",
+							"protocol": "http",
+							"host": [
+								"vorxapp",
+								"rto"
+							],
+							"path": [
+								"api",
+								"v1",
+								"students",
+								"19"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Collection",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://vorxapp.rto/api/v1/students",
+							"protocol": "http",
+							"host": [
+								"vorxapp",
+								"rto"
+							],
+							"path": [
+								"api",
+								"v1",
+								"students"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Single",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://vorxapp.rto/api/v1/students/7",
+							"protocol": "http",
+							"host": [
+								"vorxapp",
+								"rto"
+							],
+							"path": [
+								"api",
+								"v1",
+								"students",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://vorxapp.rto/api/v1/students/7",
+							"protocol": "http",
+							"host": [
+								"vorxapp",
+								"rto"
+							],
+							"path": [
+								"api",
+								"v1",
+								"students",
+								"7"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Student Contact Detail",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"addr_suburb\": \"\",\r\n    \"addr_flat_unit_detail\": \"\",\r\n    \"addr_building_property_name\": \"\",\r\n    \"addr_street_name\": \"\",\r\n    \"addr_street_num\": \"\",\r\n    \"postcode\": \"\",\r\n    \"state\": \"\",\r\n    \"addr_postal_delivery_box\": \"\",\r\n    \"home_country_res_addr\": \"\",\r\n    \"phone_home\": \"\",\r\n    \"phone_work\": \"\",\r\n    \"phone_mobile\": \"\",\r\n    \"email\": \"\",\r\n    \"email_alt\": \"\",\r\n    \"emer_name\": \"\",\r\n    \"emer_address\": \"\",\r\n    \"emer_phone\": \"\",\r\n    \"emer_relationship\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://vorxapp.rto/api/v1/students/1/contact-details/create",
+							"protocol": "http",
+							"host": [
+								"vorxapp",
+								"rto"
+							],
+							"path": [
+								"api",
+								"v1",
+								"students",
+								"1",
+								"contact-details",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"addr_suburb\": \"\",\r\n    \"addr_flat_unit_detail\": \"dsddsdsdsd\",\r\n    \"addr_building_property_name\": \"dsd\",\r\n    \"addr_street_name\": \"dsd\",\r\n    \"addr_street_num\": \"\",\r\n    \"postcode\": \"\",\r\n    \"state\": \"\",\r\n    \"addr_postal_delivery_box\": \"dsdsd\",\r\n    \"home_country_res_addr\": \"dsdsd\",\r\n    \"phone_home\": \"dsds\",\r\n    \"phone_work\": \"dsdd\",\r\n    \"phone_mobile\": \"\",\r\n    \"email\": \"\",\r\n    \"email_alt\": \"dsdsd\",\r\n    \"emer_name\": \"sdd\",\r\n    \"emer_address\": \"dsd\",\r\n    \"emer_phone\": \"dsd\",\r\n    \"emer_relationship\": \"dsdsd\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://vorxapp.rto/api/v1/students/1/contact-details",
+							"protocol": "http",
+							"host": [
+								"vorxapp",
+								"rto"
+							],
+							"path": [
+								"api",
+								"v1",
+								"students",
+								"1",
+								"contact-details"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Single",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://vorxapp.rto/api/v1/students/contact-details/1",
+							"protocol": "http",
+							"host": [
+								"vorxapp",
+								"rto"
+							],
+							"path": [
+								"api",
+								"v1",
+								"students",
+								"contact-details",
+								"1"
 							]
 						}
 					},
@@ -535,7 +608,7 @@
 		"bearer": [
 			{
 				"key": "token",
-				"value": "22|YrJFc7LpuYPF44AXZpZ6ZuErPufW1bPqirOILzvp",
+				"value": "20|RepaYiz2QHw4voPnyaSCnmeOTRSvI3IbhTq4bxCf",
 				"type": "string"
 			}
 		]
