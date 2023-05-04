@@ -28,6 +28,7 @@ class StudentController extends Controller
 
     public function create(CreateStudentRequest $request)
     {
+
         $student = StudentService::create(
             $this->generate_student_id(),
             $request->validated()['firstname'],
@@ -40,12 +41,18 @@ class StudentController extends Controller
             StudentTestEnum::memberByValue($request->validated()['is_test'])
         );
 
+        if(isset($student['error'])) {
+            return ResponseService::clientError($student['message'], $request->all());
+        }
+
         return ResponseService::successCreate('Student was created.', new StudentResource($student));
     }
 
     public function update(Student $student, UpdateStudentRequest $request)
     {
+
         $student = $student->Service()->update(
+            $request->validated()['student_id'],
             $request->validated()['firstname'],
             $request->validated()['middlename'] ?? null,
             $request->validated()['lastname'],
@@ -108,12 +115,12 @@ class StudentController extends Controller
                 $next_id = $prefix . str_pad($next_id , 5, 0, STR_PAD_LEFT);
             }
         }
+
         $check = Student::where('student_id', $next_id)->withTrashed()->first();
-        
         if($check){
             if(env('START_STUDENT_ID')) {
                 return $this->generate_student_id($next_id, true);
-            }
+            } 
             return $this->generate_student_id($next_id);
         }
 

@@ -31,7 +31,7 @@ class UpdateUnitRequest extends FormRequest
             'code' => 'required',
             'description' => 'sometimes',
             'unit_type' => [Rule::in(UnitTypeEnum::members())],
-            'assessment_method' => 'required',
+            'assessment_method' => 'sometimes',
             'nominal_hours' => 'sometimes',
             'scheduled_hours' => 'sometimes',
             'training_method_id' => 'sometimes',

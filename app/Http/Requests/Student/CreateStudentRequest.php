@@ -28,6 +28,7 @@ class CreateStudentRequest extends FormRequest
     public function rules()
     {
         return [
+            'student_id' => ['sometimes', Rule::unique('students')],
             'firstname' => 'required',
             'middlename' => 'sometimes',
             'lastname' => 'required',
@@ -47,6 +48,7 @@ class CreateStudentRequest extends FormRequest
     public function attributes()
     {
         return [
+            'student_id' => 'Student ID',
             'firstname' => 'First Name',
             'lastname' => 'Last Name',
             'date_of_birth' => 'Date of Birth',

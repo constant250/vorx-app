@@ -24,7 +24,7 @@ class UnitService extends ModelService
     public static function create(
         string $code,
         UnitTypeEnum $unit_type,
-        string $assessment_method,
+        string $assessment_method = null,
         string $description = null,
         int $nominal_hours = 0,
         int $scheduled_hours = 0,

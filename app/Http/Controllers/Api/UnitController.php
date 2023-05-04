@@ -31,7 +31,7 @@ class UnitController extends Controller
         $unit = UnitService::create(
             $request->validated()['code'],
             UnitTypeEnum::memberByValue($request->validated()['unit_type']),
-            $request->validated()['assessment_method'],
+            $request->validated()['assessment_method'] ?? null,
             $request->validated()['description'],
             $request->validated()['nominal_hours'] ?? 0,
             $request->validated()['scheduled_hours'] ?? 0,
