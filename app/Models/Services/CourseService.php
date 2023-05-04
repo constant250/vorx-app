@@ -60,5 +60,11 @@ class CourseService extends ModelService
         return $this->course->fresh();
     }
 
+    public function assignUnits(array $units)
+    {
+        $this->course->units()->sync($units);
+        return $this->course->fresh();
+    }
+
    
 }

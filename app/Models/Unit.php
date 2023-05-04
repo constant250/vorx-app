@@ -41,6 +41,11 @@ class Unit extends Model implements ImageableInterface
         return $rootPath;
     }
 
+    public function course()
+    {
+        return $this->belongsToMany(Course::class);
+    }
+
     public function account()
     {
         return $this->belongsTo(Account::class);

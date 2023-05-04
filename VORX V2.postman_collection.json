@@ -1,0 +1,563 @@
+{
+	"info": {
+		"_postman_id": "812a2355-665d-4b82-8f6e-c0e4ddd8e4a7",
+		"name": "VORX V2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26981171"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "xy@vorx.io",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "password",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://staging-v2.vorx.com.au/api/v1/login",
+							"protocol": "https",
+							"host": [
+								"staging-v2",
+								"vorx",
+								"com",
+								"au"
+							],
+							"path": [
+								"api",
+								"v1",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Course",
+			"item": [
+				{
+					"name": "Get Collection",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://staging-v2.vorx.com.au/api/v1/courses",
+							"protocol": "https",
+							"host": [
+								"staging-v2",
+								"vorx",
+								"com",
+								"au"
+							],
+							"path": [
+								"api",
+								"v1",
+								"courses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Single",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://staging-v2.vorx.com.au/api/v1/courses/7",
+							"protocol": "https",
+							"host": [
+								"staging-v2",
+								"vorx",
+								"com",
+								"au"
+							],
+							"path": [
+								"api",
+								"v1",
+								"courses",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"code\": \"0345ABX\",\n  \"name\": \"How to train your dragon\",\n  \"target_enrolee\": 100,\n  \"tp_code\": \"password\",\n  \"status\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://staging-v2.vorx.com.au/api/v1/courses",
+							"protocol": "https",
+							"host": [
+								"staging-v2",
+								"vorx",
+								"com",
+								"au"
+							],
+							"path": [
+								"api",
+								"v1",
+								"courses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"code\": \"0345ABX\",\n  \"name\": \"How to train your dragon\",\n  \"target_enrolee\": 200,\n  \"tp_code\": \"password\",\n  \"status\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://staging-v2.vorx.com.au/api/v1/courses/7",
+							"protocol": "https",
+							"host": [
+								"staging-v2",
+								"vorx",
+								"com",
+								"au"
+							],
+							"path": [
+								"api",
+								"v1",
+								"courses",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://staging-v2.vorx.com.au/api/v1/courses/7",
+							"protocol": "https",
+							"host": [
+								"staging-v2",
+								"vorx",
+								"com",
+								"au"
+							],
+							"path": [
+								"api",
+								"v1",
+								"courses",
+								"7"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Student",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"firstname\": \"Jon\",\r\n  \"middlename\": \"\",\r\n  \"lastname\": \"Doe\",\r\n  \"date_of_birth\": \"1994-03-07\",\r\n  \"gender\": \"\",\r\n  \"shore_type\": \"ONSHORE\",\r\n  \"is_active\": 1,\r\n  \"is_test\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://staging-v2.vorx.com.au/api/v1/students/create",
+							"protocol": "https",
+							"host": [
+								"staging-v2",
+								"vorx",
+								"com",
+								"au"
+							],
+							"path": [
+								"api",
+								"v1",
+								"students",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"student_id\": \"VRX00003\",\r\n  \"firstname\": \"Xy\",\r\n  \"middlename\": \"Midol Update\",\r\n  \"lastname\": \"Joaquin\",\r\n  \"date_of_birth\": \"1994-03-10\",\r\n  \"gender\": \"Female\",\r\n  \"shore_type\": \"ONSHORE\",\r\n  \"is_active\": 1,\r\n  \"is_test\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://staging-v2.vorx.com.au/api/v1/students/4",
+							"protocol": "https",
+							"host": [
+								"staging-v2",
+								"vorx",
+								"com",
+								"au"
+							],
+							"path": [
+								"api",
+								"v1",
+								"students",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Collection",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://staging-v2.vorx.com.au/api/v1/students",
+							"protocol": "https",
+							"host": [
+								"staging-v2",
+								"vorx",
+								"com",
+								"au"
+							],
+							"path": [
+								"api",
+								"v1",
+								"students"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Single",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://staging-v2.vorx.com.au/api/v1/students/3",
+							"protocol": "https",
+							"host": [
+								"staging-v2",
+								"vorx",
+								"com",
+								"au"
+							],
+							"path": [
+								"api",
+								"v1",
+								"students",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://staging-v2.vorx.com.au/api/v1/students/3",
+							"protocol": "https",
+							"host": [
+								"staging-v2",
+								"vorx",
+								"com",
+								"au"
+							],
+							"path": [
+								"api",
+								"v1",
+								"students",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Unit",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"code\": \"ACMACR401\",\r\n  \"description\": \"Comply with animal control and regulation requirementsss\",\r\n  \"unit_type\": \"CORE\",\r\n  \"assessment_method\": 1,\r\n  \"nominal_hours\": 0,\r\n  \"scheduled_hours\": 20,\r\n  \"training_method_id\": 1,\r\n  \"subject_field_educ_id\": 20,\r\n  \"vet_flag\": 0,\r\n  \"status\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://staging-v2.vorx.com.au/api/v1/units/create",
+							"protocol": "https",
+							"host": [
+								"staging-v2",
+								"vorx",
+								"com",
+								"au"
+							],
+							"path": [
+								"api",
+								"v1",
+								"units",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"code\": \"ACMACR40111\",\r\n  \"description\": \"Comply with animal control and regulation requirements\",\r\n  \"unit_type\": \"CORE\",\r\n  \"assessment_method\": \"\",\r\n  \"nominal_hours\": 24,\r\n  \"scheduled_hours\": 4,\r\n  \"training_method_id\": \"\",\r\n  \"subject_field_educ_id\": \"\",\r\n  \"vet_flag\": 0,\r\n  \"status\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://staging-v2.vorx.com.au/api/v1/units/5",
+							"protocol": "https",
+							"host": [
+								"staging-v2",
+								"vorx",
+								"com",
+								"au"
+							],
+							"path": [
+								"api",
+								"v1",
+								"units",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Collection",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://staging-v2.vorx.com.au/api/v1/units",
+							"protocol": "https",
+							"host": [
+								"staging-v2",
+								"vorx",
+								"com",
+								"au"
+							],
+							"path": [
+								"api",
+								"v1",
+								"units"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Single",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://staging-v2.vorx.com.au/api/v1/units/3",
+							"protocol": "https",
+							"host": [
+								"staging-v2",
+								"vorx",
+								"com",
+								"au"
+							],
+							"path": [
+								"api",
+								"v1",
+								"units",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://staging-v2.vorx.com.au/api/v1/units/4",
+							"protocol": "https",
+							"host": [
+								"staging-v2",
+								"vorx",
+								"com",
+								"au"
+							],
+							"path": [
+								"api",
+								"v1",
+								"units",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "22|YrJFc7LpuYPF44AXZpZ6ZuErPufW1bPqirOILzvp",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

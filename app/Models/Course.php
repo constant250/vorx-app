@@ -53,4 +53,14 @@ class Course extends Model implements ImageableInterface
     {
         return $this->belongsTo(Account::class);
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+    
+    public function units()
+    {
+        return $this->belongsToMany(Unit::class);
+    }
 }
