@@ -4,7 +4,8 @@ namespace App\Traits;
 
 use App\Models\Image;
 use App\Models\Services\ImageService;
-use Illuminate\Http\UploadedFile;
+// use Illuminate\Http\UploadedFile;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 trait ImageModelServiceTrait
 {

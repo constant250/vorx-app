@@ -4,7 +4,8 @@ namespace App\Models\Services;
 
 use App\Interfaces\ImageableInterface;
 use App\Models\Image;
-use Illuminate\Http\UploadedFile;
+// use Illuminate\Http\UploadedFile;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class ImageService extends ModelService
 {

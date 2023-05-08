@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ImageRequest;
+use App\Http\Resources\ImageResource;
 use Illuminate\Http\Request;
 use App\Http\Resources\StudentResource;
 use App\Http\Requests\Student\CreateStudentRequest;
@@ -19,6 +21,11 @@ class StudentController extends Controller
 {
     public static function apiRoutes()
     {
+        // file upload routes
+        Route::post('students/{student}/upload', [StudentController::class, 'uploadImage']);
+        Route::delete('students/{student}/{file_id}', [StudentController::class, 'deleteImage']);
+
+
         Route::post('students/create', [StudentController::class, 'create']);
         Route::put('students/{student}', [StudentController::class, 'update']);
         Route::delete('students/{student}', [StudentController::class, 'delete']);
@@ -125,5 +132,19 @@ class StudentController extends Controller
         }
 
         return $next_id;
+    }
+
+    public function uploadImage(ImageRequest $request, Student $student)
+    {
+        $images = $student->Service()->uploadImages($request->files);
+
+        return ResponseService::success('Student file was uploaded.', ImageResource::collection($images));
+    }
+
+    public function deleteImage(Student $student, int $file_id)
+    {
+        $student->Service()->detachImage($file_id);
+
+        return ResponseService::success('Student file was deleted.');
     }
 }
