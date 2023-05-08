@@ -33,24 +33,31 @@ class StudentService extends ModelService
         StudentTestEnum $is_test
     )
     {
-        $student = new Student;
-        $student->student_id = $student_id;
-        $student->firstname = $firstname;
-        $student->middlename = $middlename;
-        $student->lastname = $lastname;
-        $student->gender = $gender;
-        $student->date_of_birth = $date_of_birth;
-        $student->shore_type = $shore_type;
-        $student->is_active = $is_active;
-        $student->is_test = $is_test;
-        $student->user_id = Auth::user()->id;
-        $student->account_id = Auth::user()->account_id;
-        $student->save();
+        $result = static::check_student($firstname,$lastname,$date_of_birth,$gender);
 
-        return $student;
+        if ($result == false) {
+            $student = new Student;
+            $student->student_id = $student_id;
+            $student->firstname = $firstname;
+            $student->middlename = $middlename;
+            $student->lastname = $lastname;
+            $student->gender = $gender;
+            $student->date_of_birth = $date_of_birth;
+            $student->shore_type = $shore_type;
+            $student->is_active = $is_active;
+            $student->is_test = $is_test;
+            $student->user_id = Auth::user()->id;
+            $student->account_id = Auth::user()->account_id;
+            $student->save();
+
+            return $student;
+        }else{
+            return ['error' => true, 'message' => 'Student already exist'];
+        }
     }
    
     public function update(
+        string $student_id,
         string $firstname,
         string $middlename = null,
         string $lastname,
@@ -61,6 +68,7 @@ class StudentService extends ModelService
         StudentTestEnum $is_test
     )
     {
+        $this->student->student_id = $student_id;
         $this->student->firstname = $firstname;
         $this->student->middlename = $middlename;
         $this->student->lastname = $lastname;
@@ -72,5 +80,19 @@ class StudentService extends ModelService
         $this->student->save();
 
         return $this->student->fresh();
+    }
+
+    public static function check_student($firstname,$lastname,$date_of_birth,$gender)
+    {
+
+        $result = false;
+
+        $student = Student::where('firstname', 'LIKE', '%' . $firstname . '%')->where('lastname', 'LIKE', '%' . $lastname . '%')->where('date_of_birth', 'LIKE', '%' . $date_of_birth . '%')->where('gender', $gender)->first();
+
+        if ($student != null) {
+            $result = true;
+        }
+
+        return $result;
     }
 }
