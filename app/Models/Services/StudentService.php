@@ -7,9 +7,12 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Enums\StudentShoreTypeEnum;
 use App\Models\Enums\StudentStatusEnum;
 use App\Models\Enums\StudentTestEnum;
+use App\Traits\ImageModelServiceTrait;
 
 class StudentService extends ModelService
 {
+    use ImageModelServiceTrait;
+    
     /**
      * @var Student
      */
@@ -33,7 +36,7 @@ class StudentService extends ModelService
         StudentTestEnum $is_test
     )
     {
-        $result = static::check_student($firstname,$lastname,$date_of_birth,$gender);
+        $result = static::checkStudent($firstname,$lastname,$date_of_birth,$gender);
 
         if ($result == false) {
             $student = new Student;
@@ -82,7 +85,7 @@ class StudentService extends ModelService
         return $this->student->fresh();
     }
 
-    public static function check_student($firstname,$lastname,$date_of_birth,$gender)
+    public static function checkStudent($firstname,$lastname,$date_of_birth,$gender)
     {
 
         $result = false;
@@ -94,5 +97,17 @@ class StudentService extends ModelService
         }
 
         return $result;
+    }
+
+    public function uploadImages(object $images)
+    {
+        foreach ($images as $image) {
+            $filename = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME) . '_' . time();
+            $file = $this->student->FileServiceFactory()->uploadFile($image, $filename);
+
+            $this->student->Service()->attachImage($image, $file['name']);
+        }
+
+        return $this->student->fresh()->images;
     }
 }

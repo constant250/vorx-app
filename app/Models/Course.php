@@ -40,7 +40,7 @@ class Course extends Model implements ImageableInterface
     
     public function getRootDestinationPath(string $dir = null): string
     {
-        $rootPath = "/course/{$this->id}";
+        $rootPath = "/vorx-2/course/{$this->id}";
 
         if ($dir) {
             $rootPath .= '/' . trim($dir, '/');

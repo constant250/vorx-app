@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Interfaces\ImageableInterface;
+use App\Models\Enums\StorageDiskEnum;
 use App\Models\Enums\StudentShoreTypeEnum;
 use App\Models\Enums\StudentStatusEnum;
 use App\Models\Enums\StudentTestEnum;
@@ -13,6 +14,7 @@ use App\Traits\ImageableTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Models\Services\Factories\FileServiceFactory;
 
 class Student extends Model implements ImageableInterface
 {
@@ -42,9 +44,14 @@ class Student extends Model implements ImageableInterface
         return new StudentService($this);
     }
 
+    public function FileServiceFactory(string $dir = null)
+    {
+        return FileServiceFactory::resolve($this, StorageDiskEnum::PUBLIC_S3(), $dir);
+    }
+
     public function getRootDestinationPath(string $dir = null): string
     {
-        $rootPath = "/course/{$this->id}";
+        $rootPath = "/vorx-2/student/{$this->id}";
 
         if ($dir) {
             $rootPath .= '/' . trim($dir, '/');
@@ -56,6 +63,11 @@ class Student extends Model implements ImageableInterface
     public function account()
     {
         return $this->belongsTo(Account::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 
 }
