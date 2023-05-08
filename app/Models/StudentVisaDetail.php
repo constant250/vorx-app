@@ -25,5 +25,8 @@ class StudentVisaDetail extends Model
         return $this->belongsTo(Student::class);
     }
 
-    // TODOs - visa type relationship
+    public function visa()
+    {
+        return $this->belongsTo(VisaType::class, 'visa_type_id', 'id');
+    }
 }
