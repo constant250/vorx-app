@@ -70,6 +70,7 @@ class StudentController extends Controller
     public function update(Student $student, UpdateStudentRequest $request)
     {
         $student = $student->Service()->update(
+            $request->validated()['student_id'],
             $request->validated()['firstname'],
             $request->validated()['middlename'] ?? null,
             $request->validated()['lastname'],

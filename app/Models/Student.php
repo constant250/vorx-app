@@ -69,5 +69,19 @@ class Student extends Model implements ImageableInterface
     {
         return $this->belongsTo(User::class);
     }
+    
+    public function contact_details()
+    {
+        return $this->hasOne(StudentContactDetail::class);
+    }
 
+    public function visa_details()
+    {
+        return $this->hasOne(StudentVisaDetail::class);
+    }
+
+    public function avetmiss_details()
+    {
+        return $this->hasOne(StudentAvetmissDetail::class);
+    }
 }

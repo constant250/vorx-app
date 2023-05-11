@@ -32,10 +32,10 @@ class CreateUnitRequest extends FormRequest
             'description' => 'sometimes',
             'unit_type' => [Rule::in(UnitTypeEnum::members())],
             'assessment_method' => 'sometimes',
-            'nominal_hours' => 'sometimes',
-            'scheduled_hours' => 'sometimes',
-            'training_method_id' => 'sometimes',
-            'subject_field_educ_id' => 'sometimes',
+            'nominal_hours' => 'nullable|numeric',
+            'scheduled_hours' => 'nullable|numeric',
+            'training_method_id' => 'nullable|numeric',
+            'subject_field_educ_id' => 'nullable|numeric',
             'vet_flag' => [Rule::in(UnitVetFlagEnum::members())],
             'status' => [Rule::in(UnitStatusEnum::members())],
         ];
@@ -45,13 +45,17 @@ class CreateUnitRequest extends FormRequest
      * Get custom attributes for validator errors.
      *
      * @return array
-     */
+     */ 
     public function attributes()
     {
         return [
             'code' => 'Code',
             'unit_type' => 'Unit Type',
             'assessment_method' => 'Assessment Method',
+            'nominal_hours' => 'Nominal Hours',
+            'scheduled_hours' => 'Scheduled Hours',
+            'training_method_id' => 'Training Method',
+            'subject_field_educ_id' => 'Subject Field of Education Identifier',
             'vet_flag' => 'VET Flag Status',
             'status' => 'Status',
         ];

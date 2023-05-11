@@ -7,7 +7,7 @@ namespace App\Models\Enums;
  * @method static NO()
  *
  */
-class PriorEducationalAchievmentFlagEnum extends Enumerate
+class PriorEducationalAchievementFlagEnum extends Enumerate
 {
     const YES = 'Y';
     const NO = 'N';

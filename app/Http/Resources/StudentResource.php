@@ -19,7 +19,7 @@ class StudentResource extends JsonResource
      */
     public function toArray($request)
     {
-        // return parent::toArray($request);
+        // return parent::toArray($request);\
         return [
             'id' => $this->id,
             'student_id' => $this->student_id,
@@ -33,9 +33,11 @@ class StudentResource extends JsonResource
             'is_active_label' => $this->is_active->getLabel(),
             'is_test' => $this->is_test,
             'is_test_label' => $this->is_test->getLabel(),
+            'contact_details' => new StudentContactDetailResource($this->contact_details),
+            'visa_details' => new StudentVisaDetailResource($this->visa_details),
+            'avetmiss_details' => new StudentAvetmissDetailResource($this->avetmiss_details),
             'attachments' => ImageResource::collection($this->images),
             'user' => $this->user,
-            
         ];
     }
 }
