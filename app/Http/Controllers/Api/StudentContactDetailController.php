@@ -52,8 +52,8 @@ class StudentContactDetailController extends Controller
 
     public function update(Student $student, UpdateStudentContactDetailRequest $request)
     {
-        $contact = StudentContactDetail::where('student_id', $student->id)->first();
         $validated = $request->validated();
+        $contact = $student->contact_details;
         $contact = $contact->Service()->update(
             $validated['addr_suburb'] ?? null,
             $validated['addr_flat_unit_detail'] ?? null,
@@ -80,8 +80,7 @@ class StudentContactDetailController extends Controller
 
     public function getSingle(Student $student)
     {
-        $contact = StudentContactDetail::where('student_id', $student->id)->first();
-        
+        $contact = $student->contact_details;
         return new StudentContactDetailResource($contact);
     }
 }
