@@ -38,6 +38,7 @@ class StudentResource extends JsonResource
             'avetmiss_details' => new StudentAvetmissDetailResource($this->avetmiss_details),
             'attachments' => ImageResource::collection($this->images),
             'user' => $this->user,
+            'notes' => StudentNoteResource::collection($this->notes),
         ];
     }
 }
