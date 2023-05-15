@@ -84,4 +84,9 @@ class Student extends Model implements ImageableInterface
     {
         return $this->hasOne(StudentAvetmissDetail::class);
     }
+
+    public function notes()
+    {
+        return $this->hasMany(StudentNote::class);
+    }
 }
