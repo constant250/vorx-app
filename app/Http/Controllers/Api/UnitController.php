@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Http\Requests\ImageRequest;
+use App\Http\Resources\ImageResource;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -19,6 +21,10 @@ class UnitController extends Controller
 {
     public static function apiRoutes()
     {
+        // file upload routes
+        Route::post('units/{unit}/upload', [UnitController::class, 'uploadImage']);
+        Route::delete('units/{unit}/{file_id}', [UnitController::class, 'deleteImage']);
+
         Route::post('units/create', [UnitController::class, 'create']);
         Route::put('units/{unit}', [UnitController::class, 'update']);
         Route::delete('units/{unit}', [UnitController::class, 'delete']);
@@ -84,6 +90,20 @@ class UnitController extends Controller
 
         return ResponseService::success('Unit was deleted.');
 
+    }
+
+    public function uploadImage(ImageRequest $request, Unit $unit)
+    {
+        $images = $unit->Service()->uploadImages($request->files);
+
+        return ResponseService::success('Unit file was uploaded.', ImageResource::collection($images));
+    }
+
+    public function deleteImage(Unit $unit, int $file_id)
+    {
+        $unit->Service()->detachImage($file_id);
+
+        return ResponseService::success('Unit file was deleted.');
     }
 
 }

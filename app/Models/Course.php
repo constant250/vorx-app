@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Interfaces\ImageableInterface;
+use App\Models\Enums\StorageDiskEnum;
 use App\Models\Enums\CourseStatusEnum;
 use App\Models\Services\CourseService;
 use App\Scopes\AccountScope;
@@ -11,6 +12,7 @@ use App\Traits\ImageableTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Models\Services\Factories\FileServiceFactory;
 
 class Course extends Model implements ImageableInterface
 {
@@ -38,6 +40,11 @@ class Course extends Model implements ImageableInterface
         return new CourseService($this);
     }
     
+    public function FileServiceFactory(string $dir = null)
+    {
+        return FileServiceFactory::resolve($this, StorageDiskEnum::PUBLIC_S3(), $dir);
+    }
+
     public function getRootDestinationPath(string $dir = null): string
     {
         $rootPath = "/vorx-2/course/{$this->id}";

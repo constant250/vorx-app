@@ -18,6 +18,7 @@ class CourseResource extends JsonResource
         // return parent::toArray($request);
 
         return [
+            'id' => $this->id,
             'code' => $this->code,
             'name' => $this->name,
             'title' => $this->title,
@@ -25,9 +26,13 @@ class CourseResource extends JsonResource
             'tp_code' => $this->tp_code,
             'status' => $this->status,
             'status_label' => $this->status->getLabel(),
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
+            'deleted_at' => $this->deleted_at,
             'units' => $this->units,
             'user' => $this->user,
-
+            'account' => $this->account,
+            'attachments' => ImageResource::collection($this->images),
         ];
     }
 }

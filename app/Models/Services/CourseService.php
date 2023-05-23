@@ -5,9 +5,13 @@ namespace App\Models\Services;
 use App\Models\Course;
 use App\Models\Enums\CourseStatusEnum;
 use Illuminate\Support\Facades\Auth;
+use App\Traits\ImageModelServiceTrait;
 
 class CourseService extends ModelService
 {
+
+    use ImageModelServiceTrait;
+
     /**
      * @var Course
      */
@@ -66,5 +70,15 @@ class CourseService extends ModelService
         return $this->course->fresh();
     }
 
-   
+    public function uploadImages(object $images)
+    {
+        foreach ($images as $image) {
+            $filename = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME) . '_' . time();
+            $file = $this->course->FileServiceFactory()->uploadFile($image, $filename);
+
+            $this->course->Service()->attachImage($image, $file['name']);
+        }
+
+        return $this->course->fresh()->images;
+    }
 }

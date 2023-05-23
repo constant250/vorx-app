@@ -7,9 +7,13 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Enums\UnitStatusEnum;
 use App\Models\Enums\UnitTypeEnum;
 use App\Models\Enums\UnitVetFlagEnum;
+use App\Traits\ImageModelServiceTrait;
 
 class UnitService extends ModelService
 {
+    
+    use ImageModelServiceTrait;
+
     /**
      * @var Unit
      */
@@ -79,5 +83,16 @@ class UnitService extends ModelService
 
         return $this->unit->fresh();
     }
-   
+    
+    public function uploadImages(object $images)
+    {
+        foreach ($images as $image) {
+            $filename = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME) . '_' . time();
+            $file = $this->unit->FileServiceFactory()->uploadFile($image, $filename);
+
+            $this->unit->Service()->attachImage($image, $file['name']);
+        }
+
+        return $this->unit->fresh()->images;
+    }
 }
