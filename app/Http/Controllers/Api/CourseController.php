@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers\Api;
 
-// use App\Http\Resources\ImageResource;
+use App\Http\Requests\ImageRequest;
+use App\Http\Resources\ImageResource;
 use App\Http\Requests\CreateCourseRequest;
 use App\Http\Requests\UpdateCourseRequest;
 use App\Http\Resources\CourseResource;
@@ -20,6 +21,10 @@ class CourseController extends Controller
 {
     public static function apiRoutes()
     {
+        // file upload routes
+        Route::post('courses/{course}/upload', [CourseController::class, 'uploadImage']);
+        Route::delete('courses/{course}/{file_id}', [CourseController::class, 'deleteImage']);
+
         Route::post('courses/{course}/assign-units', [CourseController::class, 'assignUnits']);
         Route::post('courses', [CourseController::class, 'create']);
         Route::put('courses/{course}', [CourseController::class, 'update']);
@@ -82,6 +87,20 @@ class CourseController extends Controller
         $course = $course->Service()->assignUnits($request->units);
         
         return ResponseService::success('Units was added to the course.',  new CourseResource($course));
+    }
+
+    public function uploadImage(ImageRequest $request, Course $course)
+    {
+        $images = $course->Service()->uploadImages($request->files);
+
+        return ResponseService::success('Course file was uploaded.', ImageResource::collection($images));
+    }
+
+    public function deleteImage(Course $course, int $file_id)
+    {
+        $course->Service()->detachImage($file_id);
+
+        return ResponseService::success('Course file was deleted.');
     }
 
 }

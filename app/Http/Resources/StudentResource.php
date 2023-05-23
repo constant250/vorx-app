@@ -33,11 +33,15 @@ class StudentResource extends JsonResource
             'is_active_label' => $this->is_active->getLabel(),
             'is_test' => $this->is_test,
             'is_test_label' => $this->is_test->getLabel(),
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
+            'deleted_at' => $this->deleted_at,
             'contact_details' => new StudentContactDetailResource($this->contact_details),
             'visa_details' => new StudentVisaDetailResource($this->visa_details),
             'avetmiss_details' => new StudentAvetmissDetailResource($this->avetmiss_details),
             'attachments' => ImageResource::collection($this->images),
             'user' => $this->user,
+            'account' => $this->account,
             'notes' => StudentNoteResource::collection($this->notes),
         ];
     }
