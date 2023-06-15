@@ -17,7 +17,7 @@ class StudentContactDetailController extends Controller
 {
     public static function apiRoutes()
     {
-        Route::post('students/{student}/contact-details/create', [StudentContactDetailController::class, 'create']);
+        Route::post('students/{student}/contact-details', [StudentContactDetailController::class, 'create']);
         Route::put('students/{student}/contact-details', [StudentContactDetailController::class, 'update']);
         Route::get('students/{student}/contact-details', [StudentContactDetailController::class, 'getSingle']);
     }

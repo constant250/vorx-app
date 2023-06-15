@@ -25,7 +25,7 @@ class UnitController extends Controller
         Route::post('units/{unit}/upload', [UnitController::class, 'uploadImage']);
         Route::delete('units/{unit}/{file_id}', [UnitController::class, 'deleteImage']);
 
-        Route::post('units/create', [UnitController::class, 'create']);
+        Route::post('units', [UnitController::class, 'create']);
         Route::put('units/{unit}', [UnitController::class, 'update']);
         Route::delete('units/{unit}', [UnitController::class, 'delete']);
         Route::get('units/{unit}', [UnitController::class, 'getSingle']);

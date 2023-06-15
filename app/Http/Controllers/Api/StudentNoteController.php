@@ -17,7 +17,7 @@ class StudentNoteController extends Controller
 {
     public static function apiRoutes()
     {
-        Route::post('students/{student}/notes/create', [StudentNoteController::class, 'create']);
+        Route::post('students/{student}/notes', [StudentNoteController::class, 'create']);
         Route::put('students/{student}/notes/{note}', [StudentNoteController::class, 'update']);
         Route::delete('students/{student}/notes/{note}', [StudentNoteController::class, 'delete']);
         Route::get('students/{student}/notes/{note}', [StudentNoteController::class, 'getSingle']);

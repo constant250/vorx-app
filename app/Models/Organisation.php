@@ -8,10 +8,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 use App\Interfaces\ImageableInterface;
+use App\Models\Enums\StorageDiskEnum;
 use App\Scopes\AccountScope;
 use App\Traits\BaseAccountModelTrait;
 use App\Traits\ImageableTrait;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Models\Services\Factories\FileServiceFactory;
 
 class Organisation extends Model implements ImageableInterface
 {
@@ -40,6 +42,10 @@ class Organisation extends Model implements ImageableInterface
         return new OrganisationService($this);
     }
 
+    public function FileServiceFactory(string $dir = null)
+    {
+        return FileServiceFactory::resolve($this, StorageDiskEnum::PUBLIC_S3(), $dir);
+    }
 
     public function getRootDestinationPath(string $dir = null): string
     {

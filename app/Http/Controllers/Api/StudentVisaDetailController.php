@@ -19,7 +19,7 @@ class StudentVisaDetailController extends Controller
 {
     public static function apiRoutes()
     {
-        Route::post('students/{student}/visa-details/create', [StudentVisaDetailController::class, 'create']);
+        Route::post('students/{student}/visa-details', [StudentVisaDetailController::class, 'create']);
         Route::put('students/{student}/visa-details', [StudentVisaDetailController::class, 'update']);
         Route::get('students/{student}/visa-details', [StudentVisaDetailController::class, 'getSingle']);
     }
