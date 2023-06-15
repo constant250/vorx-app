@@ -20,7 +20,7 @@ class StudentAvetmissDetailController extends Controller
 {
     public static function apiRoutes()
     {
-        Route::post('students/{student}/avetmiss-details/create', [StudentAvetmissDetailController::class, 'create']);
+        Route::post('students/{student}/avetmiss-details', [StudentAvetmissDetailController::class, 'create']);
         Route::put('students/{student}/avetmiss-details', [StudentAvetmissDetailController::class, 'update']);
         Route::get('students/{student}/avetmiss-details', [StudentAvetmissDetailController::class, 'getSingle']);
     }

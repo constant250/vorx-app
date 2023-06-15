@@ -7,6 +7,8 @@ use App\Http\Controllers\Api\StudentVisaDetailController;
 use App\Http\Controllers\Api\StudentAvetmissDetailController;
 use App\Http\Controllers\Api\StudentNoteController;
 use App\Http\Controllers\Api\UnitController;
+use App\Http\Controllers\Api\OrganisationController;
+
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Http\Request;
@@ -46,6 +48,7 @@ Route::prefix('v1')->middleware(['auth:sanctum'])->group(function () {
     StudentVisaDetailController::apiRoutes();
     StudentAvetmissDetailController::apiRoutes();
     StudentNoteController::apiRoutes();
+    OrganisationController::apiRoutes();
 });
 
 /**
