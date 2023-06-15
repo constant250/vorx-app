@@ -67,4 +67,15 @@ class Organisation extends Model implements ImageableInterface
     {
         return $this->belongsTo(User::class);
     }
+
+    public function org_bank()
+    {
+        return $this->hasOne(OrganisationBankDetails::class);
+    }
+
+    public function org_type()
+    {
+    	return $this->hasOne(AvtOrgType::class);
+    }
+
 }
