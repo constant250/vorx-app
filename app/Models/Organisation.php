@@ -75,7 +75,12 @@ class Organisation extends Model implements ImageableInterface
 
     public function org_type()
     {
-    	return $this->hasOne(AvtOrgType::class);
+    	return $this->belongsTo(AvtOrgType::class, 'org_type_identifier', 'value');
     }
 
+    public function suburb_details()
+    {
+    	return $this->belongsTo(AvtPostcode::class, 'suburb', 'id');
+    }
+    
 }

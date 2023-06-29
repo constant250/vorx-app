@@ -21,7 +21,7 @@ class OrganisationController extends Controller
     {
         // file upload routes
         Route::post('organisations/{org}/upload-image', [OrganisationController::class, 'uploadImage']);
-        Route::delete('organisations/{org}/{type}/{file_id}', [OrganisationController::class, 'deleteImage']);
+        Route::delete('organisations/{org}/delete-image/{type}/{file_id}', [OrganisationController::class, 'deleteImage']);
 
         Route::post('organisations', [OrganisationController::class, 'create']);
         Route::put('organisations/{org}', [OrganisationController::class, 'update']);

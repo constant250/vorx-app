@@ -10,6 +10,7 @@ use App\Services\ResponseService;
 use App\Traits\ApiResponser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
 
 class AuthController extends Controller
 {
@@ -45,23 +46,27 @@ class AuthController extends Controller
         ]);
     }
 
-    public function logout()
+    public function logout(Request $request)
     {
         auth()->user()->tokens()->delete();
 
         auth()->user()->api_token = null;
         auth()->user()->save();
 
+        // $request->session()->invalidate();
+        // $request->session()->regenerateToken();
+
         return $this->success([], 'Tokens Revoked');
     }
 
     public function authUser(Request $request)
     {
-        return $this->success([
-            'success' => true,
-            'token' => auth()->user()->api_token,
-            'user' => new UserResource(auth()->user())
-        ]);
+        return $request->user();
+        // return $this->success([
+        //     'success' => true,
+        //     'token' => auth()->user()->api_token,
+        //     'user' => new UserResource(auth()->user())
+        // ]);
     }
 
     public function sampleRoute()

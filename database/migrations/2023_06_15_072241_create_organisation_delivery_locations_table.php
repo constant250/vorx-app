@@ -15,13 +15,14 @@ return new class extends Migration
     {
         Schema::create('organisation_delivery_locations', function (Blueprint $table) {
             $table->id();
-            $table->integer('org_id');
+            $table->integer('organisation_id');
             $table->string('train_org_dlvr_loc_id');
             $table->string('train_org_dlvr_loc_name');
-            $table->string('postcode');
             $table->string('state_id');
-            $table->string('addr_location');
             $table->string('country_id');
+            $table->string('suburb');
+            $table->string('postcode')->nullable();
+            $table->string('addr_location')->nullable();
             $table->string('addr_street_num')->nullable();
             $table->string('addr_street_name')->nullable();
             $table->string('addr_building_property_name')->nullable();

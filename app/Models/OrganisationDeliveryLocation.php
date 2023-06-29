@@ -29,4 +29,21 @@ class OrganisationDeliveryLocation extends Model
     {
         return $this->belongsTo(Organisation::class);
     }
+
+    public function suburb_details()
+    {
+    	return $this->belongsTo(AvtPostcode::class, 'suburb', 'id');
+    }
+
+    public function state()
+    {
+    	return $this->belongsTo(AvtStateIdentifier::class, 'state_id', 'id');
+    }
+
+    public function country()
+    {
+    	return $this->belongsTo(AvtCountryIdentifier::class, 'country_id', 'identifier');
+    }
+    
+    
 }

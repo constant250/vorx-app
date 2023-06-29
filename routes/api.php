@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\StudentAvetmissDetailController;
 use App\Http\Controllers\Api\StudentNoteController;
 use App\Http\Controllers\Api\UnitController;
 use App\Http\Controllers\Api\OrganisationController;
+use App\Http\Controllers\Api\OrganisationBankDetailsController;
 
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\ProductController;
@@ -33,7 +34,8 @@ Route::prefix('v1')->middleware(['auth:sanctum'])->group(function () {
     Route::post('logout', [AuthController::class, 'logout']);
 
     /** Fetch auth user **/
-    Route::post('auth/user', [AuthController::class, 'authUser']);
+    // Route::post('auth/user', [AuthController::class, 'authUser']);
+    Route::get('auth/user', [AuthController::class, 'authUser']);
 
     Route::get('sample', [AuthController::class, 'sampleRoute']);
 
@@ -49,6 +51,7 @@ Route::prefix('v1')->middleware(['auth:sanctum'])->group(function () {
     StudentAvetmissDetailController::apiRoutes();
     StudentNoteController::apiRoutes();
     OrganisationController::apiRoutes();
+    OrganisationBankDetailsController::apiRoutes();
 });
 
 /**

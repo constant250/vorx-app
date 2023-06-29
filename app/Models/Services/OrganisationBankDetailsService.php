@@ -20,7 +20,7 @@ class OrganisationBankDetailsService extends ModelService
     }
 
     public static function create(
-        Int $org_id,
+        Int $organisation_id,
         string $bank_name,
         string $bsb,
         string $account_name,
@@ -30,7 +30,7 @@ class OrganisationBankDetailsService extends ModelService
     )
     {
         $bank = new OrganisationBankDetails;
-        $bank->org_id = $org_id;
+        $bank->organisation_id = $organisation_id;
         $bank->bank_name = $bank_name;
         $bank->bsb = $bsb;
         $bank->account_name = $account_name;
@@ -44,7 +44,6 @@ class OrganisationBankDetailsService extends ModelService
    
 
     public function update(
-        Int $org_id,
         string $bank_name,
         string $bsb,
         string $account_name,
@@ -53,7 +52,6 @@ class OrganisationBankDetailsService extends ModelService
         string $swift_code = null
     )
     {
-        $this->bank->org_id = $org_id;
         $this->bank->bank_name = $bank_name;
         $this->bank->bsb = $bsb;
         $this->bank->account_name = $account_name;

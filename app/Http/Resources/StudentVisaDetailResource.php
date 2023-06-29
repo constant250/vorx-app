@@ -21,6 +21,7 @@ class StudentVisaDetailResource extends JsonResource
             'passport_issued_date' => $this->passport_issued_date,
             'passport_expiry_date' => $this->passport_expiry_date,
             'visa_type_id' => $this->visa_type_id,
+            'visa' => $this->visa,
             'subclass' => $this->subclass,
             'visa_expiry_date' => $this->visa_expiry_date,
             'study_rights' => $this->study_rights,

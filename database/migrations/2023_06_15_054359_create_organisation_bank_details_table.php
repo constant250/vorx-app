@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('organisation_bank_details', function (Blueprint $table) {
             $table->id();
-            $table->integer('org_id');
+            $table->integer('organisation_id');
             $table->string('bank_name');
             $table->string('bsb');
             $table->string('account_name');
