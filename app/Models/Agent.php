@@ -3,6 +3,9 @@
 namespace App\Models;
 
 use App\Interfaces\ImageableInterface;
+use App\Models\Enums\AgentShoreTypeEnum;
+use App\Models\Enums\AgentStatusEnum;
+use App\Models\Enums\AgentTestEnum;
 use App\Models\Enums\StorageDiskEnum;
 use App\Models\Services\AgentService;
 use App\Scopes\AccountScope;
@@ -24,9 +27,9 @@ class Agent extends Model implements ImageableInterface
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
         'deleted_at' => 'datetime',
-        'is_active' => StudentStatusEnum::class,
-        'is_test' => StudentTestEnum::class,
-        'shore_type' => StudentShoreTypeEnum::class,
+        'is_active' => AgentStatusEnum::class,
+        'is_test' => AgentTestEnum::class,
+        'shore_type' => AgentShoreTypeEnum::class,
     ];
 
     protected static function boot()
