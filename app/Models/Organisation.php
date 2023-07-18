@@ -83,4 +83,8 @@ class Organisation extends Model implements ImageableInterface
     	return $this->belongsTo(AvtPostcode::class, 'suburb', 'id');
     }
     
+    public function delivery_locations()
+    {
+        return $this->hasMany(OrganisationDeliveryLocation::class, 'organisation_id', 'id');
+    }
 }

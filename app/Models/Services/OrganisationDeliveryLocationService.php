@@ -2,9 +2,10 @@
 
 namespace App\Models\Services;
 
+use App\Models\Enums\OrganisationDlvrLocStatusEnum;
 use App\Models\OrganisationDeliveryLocation;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Enums\OrganisationDlvrLocStatusEnum;
+
 
 class OrganisationDeliveryLocationService extends ModelService
 {
@@ -21,13 +22,14 @@ class OrganisationDeliveryLocationService extends ModelService
     }
 
     public static function create(
-        Int $org_id,
+        Int $organisation_id,
         string $train_org_dlvr_loc_id,
         string $train_org_dlvr_loc_name,
-        string $postcode,
         string $state_id,
-        string $addr_location,
         string $country_id,
+        string $suburb,
+        string $postcode,
+        string $addr_location = null,
         string $addr_street_num = null,
         string $addr_street_name = null,
         string $addr_building_property_name = null,
@@ -36,9 +38,10 @@ class OrganisationDeliveryLocationService extends ModelService
     )
     {
         $deliverylocation = new OrganisationDeliveryLocation;
-        $deliverylocation->org_id = $org_id;
+        $deliverylocation->organisation_id = $organisation_id;
         $deliverylocation->train_org_dlvr_loc_id = $train_org_dlvr_loc_id;
         $deliverylocation->train_org_dlvr_loc_name = $train_org_dlvr_loc_name;
+        $deliverylocation->suburb = $suburb;
         $deliverylocation->postcode = $postcode;
         $deliverylocation->state_id = $state_id;
         $deliverylocation->addr_location = $addr_location;
@@ -56,13 +59,13 @@ class OrganisationDeliveryLocationService extends ModelService
    
 
     public function update(
-        Int $org_id,
         string $train_org_dlvr_loc_id,
         string $train_org_dlvr_loc_name,
-        string $postcode,
         string $state_id,
-        string $addr_location,
         string $country_id,
+        string $suburb,
+        string $postcode,
+        string $addr_location = null,
         string $addr_street_num = null,
         string $addr_street_name = null,
         string $addr_building_property_name = null,
@@ -70,9 +73,9 @@ class OrganisationDeliveryLocationService extends ModelService
         OrganisationDlvrLocStatusEnum $is_active
     )
     {
-        $this->deliverylocation->org_id = $org_id;
         $this->deliverylocation->train_org_dlvr_loc_id = $train_org_dlvr_loc_id;
         $this->deliverylocation->train_org_dlvr_loc_name = $train_org_dlvr_loc_name;
+        $this->deliverylocation->suburb = $suburb;
         $this->deliverylocation->postcode = $postcode;
         $this->deliverylocation->state_id = $state_id;
         $this->deliverylocation->addr_location = $addr_location;

@@ -29,7 +29,7 @@ class OrganisationDeliveryLocation extends Model
     {
         return $this->belongsTo(Organisation::class);
     }
-
+    
     public function suburb_details()
     {
     	return $this->belongsTo(AvtPostcode::class, 'suburb', 'id');
@@ -45,5 +45,9 @@ class OrganisationDeliveryLocation extends Model
     	return $this->belongsTo(AvtCountryIdentifier::class, 'country_id', 'identifier');
     }
     
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
     
 }
