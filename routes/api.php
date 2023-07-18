@@ -9,6 +9,7 @@ use App\Http\Controllers\Api\StudentNoteController;
 use App\Http\Controllers\Api\UnitController;
 use App\Http\Controllers\Api\OrganisationController;
 use App\Http\Controllers\Api\OrganisationBankDetailsController;
+use App\Http\Controllers\Api\OrganisationTrainingDlvryLocController;
 
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\ProductController;
@@ -52,6 +53,7 @@ Route::prefix('v1')->middleware(['auth:sanctum'])->group(function () {
     StudentNoteController::apiRoutes();
     OrganisationController::apiRoutes();
     OrganisationBankDetailsController::apiRoutes();
+    OrganisationTrainingDlvryLocController::apiRoutes();
 });
 
 /**
