@@ -26,12 +26,12 @@ class UpdateOrganisationRequest extends FormRequest
     public function rules()
     {
         return [
-            'organisation_id' => 'nullable',
-            'organisation_name' => 'nullable',
+            'organisation_id' => 'required',
+            'organisation_name' => 'required',
             'organisation_logo' => 'nullable',
             'org_type_identifier' => 'nullable',
             'abn' => 'nullable',
-            'cricos_code' => 'nullable',
+            'cricos_code' => 'required',
             'site_url' => 'nullable',
             'contact_name' => 'nullable',
             'phone_number' => 'nullable|numeric',
