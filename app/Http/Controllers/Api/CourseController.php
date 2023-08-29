@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Requests\ImageRequest;
 use App\Http\Resources\ImageResource;
-use App\Http\Requests\CreateCourseRequest;
-use App\Http\Requests\UpdateCourseRequest;
+use App\Http\Requests\Course\CreateCourseRequest;
+use App\Http\Requests\Course\UpdateCourseRequest;
 use App\Http\Resources\CourseResource;
 use App\Models\Course;
 use App\Models\Enums\CourseStatusEnum;

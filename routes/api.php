@@ -11,6 +11,7 @@ use App\Http\Controllers\Api\OrganisationController;
 use App\Http\Controllers\Api\OrganisationBankDetailsController;
 use App\Http\Controllers\Api\OrganisationTrainingDlvryLocController;
 use App\Http\Controllers\Api\AgentController;
+use App\Http\Controllers\Api\CourseStructureFeeController;
 
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\ProductController;
@@ -56,6 +57,7 @@ Route::prefix('v1')->middleware(['auth:sanctum'])->group(function () {
     OrganisationBankDetailsController::apiRoutes();
     OrganisationTrainingDlvryLocController::apiRoutes();
     AgentController::apiRoutes();
+    CourseStructureFeeController::apiRoutes();
 });
 
 /**
