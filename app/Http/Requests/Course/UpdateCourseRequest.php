@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Course;
 
 use App\Models\Enums\CourseStatusEnum;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class CreateCourseRequest extends FormRequest
+class UpdateCourseRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,7 +26,7 @@ class CreateCourseRequest extends FormRequest
     public function rules()
     {
         return [
-            'code' => 'required|unique:App\Models\Course,code',
+            'code' => 'required',
             'name' => 'required',
             'target_enrolee' => 'required|numeric',
             'tp_code' => 'sometimes',

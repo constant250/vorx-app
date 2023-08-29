@@ -70,4 +70,9 @@ class Course extends Model implements ImageableInterface
     {
         return $this->belongsToMany(Unit::class);
     }
+
+    public function structure_fee()
+    {
+        return $this->hasMany(CourseStructureFee::class);
+    }
 }
